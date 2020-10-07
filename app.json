@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Alpha Foods",
+    "slug": "food",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/img/icon.png",
+    "splash": {
+      "image": "./assets/img/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/img/icon.png"
+    },
+    "android": {
+      "package": "com.alpha.food"
+    }
+  }
+}
