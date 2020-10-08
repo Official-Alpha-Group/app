@@ -1,2 +1,2 @@
 export const BLACK = '#333031';
-export const PRIMARY = '#56a9e1';
+export const PRIMARY = '#1863c0';
