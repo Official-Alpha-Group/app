@@ -1,13 +1,12 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import * as Color from './color'
 export const  Styles = StyleSheet.create({
-    cardView: {
+    startFragment: {
         justifyContent: 'center',
         flex: 1,
         alignItems: 'center'
     },
     card: {
-        backgroundColor:Color.PRIMARY,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -27,19 +26,42 @@ export const  Styles = StyleSheet.create({
         fontFamily:'MiriamLibre-Regular',
         fontSize: 12
     },
+    textBlack: {
+        color:Color.BLACK,
+        fontFamily:'MiriamLibre-Regular',
+        fontSize: 12
+    },
     header: {
         color:'white',
         fontFamily:'MiriamLibre-Bold',
         fontSize: 13,
         marginBottom: 20
     },
+    headerBlack: {
+        color:Color.BLACK,
+        fontFamily:'MiriamLibre-Bold',
+        fontSize: 13,
+        marginBottom: 20
+    },
     appName: {
         fontSize: 30,
-        marginBottom: 100,
+        marginBottom: 80,
         fontFamily: 'KaushanScript-Regular'
     },
     marginBot: {
-        marginBottom: 30
+        marginBottom:28
+    },
+    marginTop:{
+        marginTop:28
+    },
+    opactiy:{
+        opacity:0.5
+    },
+    logo:{
+         width: 44, height: 30 
+    },
+    colorPrimary:{
+        color:Color.PRIMARY
     }
 });
  
