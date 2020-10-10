@@ -1,10 +1,10 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { StartActivity } from './src/Activities/StartActivity';
-import { SubscriptionActivity } from './src/Activities/SubscriptionActivity';
-import { RegisterActivity} from './src/Activities/RegisterActivity';
+import { StartActivity } from './src/activities/StartActivity';
+import { SubscriptionActivity } from './src/activities/SubscriptionActivity';
+import { RegisterActivity} from './src/activities/RegisterActivity';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import * as Const from 'src/const';
+import * as Const from './src/model/const';
 import { AppLoading } from 'expo';
 import { useFonts } from 'expo-font';
 
@@ -22,7 +22,7 @@ export default Init = () => {
         <Stack.Navigator>
           <Stack.Screen name="StartActivity" component={StartActivity} options={{ title:'Home' }} />
           <Stack.Screen name="SubscriptionActivity" component={SubscriptionActivity} options={{ title: Const.CARD_ONE_HEADER }} />
-          <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ title: Const.REGISTER}} />
+          <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ title:''}} />
         </Stack.Navigator>
       </NavigationContainer>
     )
