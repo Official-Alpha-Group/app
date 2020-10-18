@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput,ImageBackground } from 'react-native';
-import { Styles, toPxlHeight,toPxlWidth} from 'src/styles/styles';
+import { Text, View, TextInput, ImageBackground } from 'react-native';
+import { Styles, toPxlHeight, toPxlWidth } from 'src/styles/styles';
 import { REGISTER } from 'src/model/const';
 import { Button } from 'src/model/Button';
 import { isNaturalNumber } from 'src/model/isNatural'
@@ -37,18 +37,16 @@ export class RegisterActivity extends Component {
                         })
                     })
             } else
-                this.setState(
-                    {
-                        animating: false,
-                        errortext: 'Invalid mobile number'
-                    }
+                this.setState({
+                    animating: false,
+                    errortext: 'Invalid mobile number'
+                }
                 );
         } else
-            this.setState(
-                {
-                    animating: false,
-                    errortext: 'Enter your mobile number to continue'
-                }
+            this.setState({
+                animating: false,
+                errortext: 'Enter your mobile number to continue'
+            }
             );
 
     }
@@ -69,7 +67,7 @@ export class RegisterActivity extends Component {
                         Styles.text,
                         Styles.colorBlack]}>
                         To Login/Create enter your {'\n'} 10 digit mobile number.
-                </Text>
+                    </Text>
 
                     <TextInput
                         style={[Styles.marginBot15, Styles.input]}
@@ -80,6 +78,8 @@ export class RegisterActivity extends Component {
                         placeholder="Mobile Number"
                         autoCapitalize="none" />
                     <Button
+                        margin = {30}
+                        width={80}
                         header='Send OTP'
                         onClick={this.sendOTP}
                         animating={this.state.animating}

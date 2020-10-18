@@ -35,11 +35,14 @@ export class StartActivity extends Component {
             header={Const.CARD_ONE_HEADER}
             onClick={this.openSubscription}
             animating={false}
+            width={80}
           />
           <Button
+            margin = {30}
             header='One Time Purchase'
             onClick={this.openOneTime}
-            animating={false} />
+            animating={false}
+            width={80} />
           <Text style={[Styles.textBlack, Styles.marginTop, Styles.opactiy]}>
             OR
         </Text>

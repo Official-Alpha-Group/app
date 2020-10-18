@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import React, { Component } from 'react';
-import { Styles } from 'src/styles/styles';
+import { Styles,toPxlWidth } from 'src/styles/styles';
 // This is used to create Buttons
 export class Button extends Component {
   constructor(props) {
@@ -19,7 +19,9 @@ export class Button extends Component {
     } else {
       return (
         <TouchableOpacity onPress={this.props.onClick}
-          style={Styles.card}>
+          style={[Styles.button,
+            {margin:this.props.margin}
+          ,{width:toPxlWidth(this.props.width)}]}>
           <Text style={Styles.text}>
             {this.props.header}
           </Text>

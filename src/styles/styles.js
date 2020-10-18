@@ -14,13 +14,12 @@ export const  Styles = StyleSheet.create({
         paddingBottom:5,
         borderBottomWidth:1,
         borderBottomColor:Color.PRIMARY,
-        width:toPxlWidth(80)
     },
-    card: {
+    button: {
         backgroundColor:Color.PRIMARY,
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: "#000",
+        shadowColor: Color.PRIMARY,
         shadowOffset: {
             width: 0,
             height: 1,
@@ -28,10 +27,8 @@ export const  Styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 1,
         elevation: 1,
-        borderRadius: 5,
+        borderRadius: 10,
         padding: 15,
-        margin: 5,
-        marginBottom: 20,
         width: toPxlWidth(80)
     },
     text: {
@@ -67,16 +64,22 @@ export const  Styles = StyleSheet.create({
     logo:{
         width: 44, height: 30 
     },
+    textSmall:{
+        fontFamily:'MiriamLibre-Bold',
+        fontSize:10,
+        color : Color.BLACK,
+        marginLeft:8
+    },
     colorPrimary:{ color:Color.PRIMARY },
     marginBot: { marginBottom:30 },
     marginTop:{ marginTop:30 },
+    marginTop15:{ marginTop:15 },
     marginBot15:{marginBottom:15},
     opactiy:{ opacity:0.5 },
     colorRed:{color:'red'},
     colorBlack:{color : Color.BLACK},
-    
+    marign5:{margin:10}
 });
- 
  
 export function toPxlWidth(percent) {
     return ((Dimensions.get('window').width) * percent) / 100;
