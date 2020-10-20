@@ -54,9 +54,10 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [react-native-vector-icon](https://www.npmjs.com/package/react-native-vector-icons)
+* [react-native-paper](https://www.npmjs.com/package/react-native-paper)
+* [react-native-material-dropdown-v2](https://www.npmjs.com/package/react-native-material-dropdown-v2)
+* [react-navigation](https://reactnavigation.org)
 
 
 
