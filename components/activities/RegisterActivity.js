@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, ImageBackground } from 'react-native';
-import { Styles, toPxlHeight, toPxlWidth } from 'src/styles/styles';
-import { REGISTER } from 'src/model/const';
-import { Button } from 'src/model/Button';
-import { isNaturalNumber } from 'src/model/isNatural'
+import * as Styles from '@res/styles';
+import { REGISTER } from '@res/string';
+import { Button } from '@utils/CustomView';
+import { isNaturalNumber } from '@utils/isNatural'
 
 export class RegisterActivity extends Component {
     constructor(props) {
@@ -54,23 +54,22 @@ export class RegisterActivity extends Component {
         return (
             <ImageBackground
                 source={require('assets/img/vector.png')}
-                style={{ width: toPxlWidth(100), height: toPxlHeight(100) }}>
-                <View style={Styles.center}>
+                style={{ width: Styles.toPxlWidth(100), height: Styles.toPxlHeight(100) }}>
+                <View style={Styles.center(1)}>
                     <Text style={[
                         Styles.headerBlack,
-                        Styles.marginBot]}>
+                        Styles.setMargin(0, 0, 0, 30)]}>
                         {REGISTER}
                     </Text>
 
                     <Text style={[
-                        Styles.marginBot,
-                        Styles.text,
-                        Styles.colorBlack]}>
+                        Styles.setMargin(0, 0, 0, 30),
+                        Styles.setTextDesign()]}>
                         To Login/Create enter your {'\n'} 10 digit mobile number.
                     </Text>
 
                     <TextInput
-                        style={[Styles.marginBot15, Styles.input]}
+                        style={[Styles.setMargin(0, 0, 0, 15)]}
                         keyboardType='numeric'
                         maxLength={10}
                         onChangeText={number => this.setNumber(number)}
@@ -78,16 +77,15 @@ export class RegisterActivity extends Component {
                         placeholder="Mobile Number"
                         autoCapitalize="none" />
                     <Button
-                        margin = {30}
+                        margin={30}
                         width={80}
                         header='Send OTP'
                         onClick={this.sendOTP}
                         animating={this.state.animating}
                     />
                     <Text style={[
-                        Styles.text,
-                        Styles.colorRed,
-                        Styles.marginBot15,]}>
+                        Styles.setTextDesign('red'),
+                        Styles.setMargin(0, 0, 0, 15)]}>
                         {this.state.errortext}
                     </Text>
                 </View>

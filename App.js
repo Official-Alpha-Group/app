@@ -1,10 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { StartActivity } from './src/activities/StartActivity';
-import { SubscriptionActivity } from './src/activities/SubscriptionActivity';
-import { RegisterActivity} from './src/activities/RegisterActivity';
+import { StartActivity } from './components/activities/StartActivity';
+import { ProductActivity } from './components/activities/ProductActivity';
+import { RegisterActivity} from './components/activities/RegisterActivity';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import * as Const from './src/model/const';
 import { AppLoading } from 'expo';
 import { useFonts } from 'expo-font';
 
@@ -12,19 +11,19 @@ import { useFonts } from 'expo-font';
 const Stack = createStackNavigator();
 export default Init = () => {
   let [_FontsLoaded] = useFonts({
-    'KaushanScript-Regular': require('assets/fonts/KaushanScript-Regular.ttf'),
-    'MiriamLibre-Regular': require('assets/fonts/MiriamLibre-Regular.ttf'),
-    'MiriamLibre-Bold': require('assets/fonts/MiriamLibre-Bold.ttf'),
+    'Appfont': require('@assets/fonts/youre_gone.ttf'),
+    'Primary': require('@assets/fonts/MiriamLibre-Regular.ttf'),
+    'PrimaryBold': require('@assets/fonts/MiriamLibre-Bold.ttf'),
   });
   if (_FontsLoaded) {
     return (
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="StartActivity" component={StartActivity} options={{ title:'Home' }} />
-          <Stack.Screen name="SubscriptionActivity" component={SubscriptionActivity} options={{ title: Const.CARD_ONE_HEADER }} />
+          <Stack.Screen name="ProductActivity" component={ProductActivity} options={{ title:''}} />
           <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ title:''}} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> 
     )
   } else
     return <AppLoading />
