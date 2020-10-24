@@ -6,7 +6,7 @@
   <h3 align="center">Alpha Foods</h3>
 
   <p align="center">
-    Subscription based product delivery service.
+    Subscription Based Product Delivery Service.
     <br />
     <br />
     ·
