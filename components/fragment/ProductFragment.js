@@ -13,9 +13,10 @@ export class ProductFragment extends Component {
         super(props);
         this.state = { id: this.props.id };
     }
-    onPress(id) {
+    onPress(id,returnBack) {
         this.setState({
-            id: id
+            id: id,
+            returnBack:returnBack
         });
     };
     render() {
@@ -41,7 +42,7 @@ export class ProductFragment extends Component {
                         <CardView
                             text={`Dry Fruits`}
                             source={require('assets/img/dry_fruits.png')}
-                            onClick={() => { this.onPress(2) }} />
+                            onClick={() => { this.onPress(2,0) }} />
                         <CardView
                             text={`abc item`}
                             source={require('assets/img/coconut.png')} />
@@ -69,7 +70,7 @@ export class ProductFragment extends Component {
                         <CardView
                             text={`Dry Fruits`}
                             source={require('assets/img/dry_fruits.png')}
-                            onClick={() => { this.onPress(2) }} />
+                            onClick={() => { this.onPress(2,1) }} />
                     </View>
                     <View style={[Styles.setToBottom(), { flexDirection: 'row' }]}>
                             <Button
@@ -88,14 +89,14 @@ export class ProductFragment extends Component {
 
             return (<>
                 <TouchableOpacity 
-                onPress={() => { this.onPress(0) }}
+                onPress={() => { this.onPress(this.state.returnBack,this.state.returnBack) }}
                 style={{ flexDirection: 'row' }}> 
                     <Text style={[Styles.setTextDesign(COLOR_PRIMARY), Styles.setMargin(0, 10)]}>
                         <Icon name="md-arrow-back" size={17} color={COLOR_PRIMARY} />  View all products
                     </Text>
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row' }}>
-                   
+                        
                 </View>
                 <View style={[Styles.setToBottom(), { flexDirection: 'row' }]}>
                     <Button

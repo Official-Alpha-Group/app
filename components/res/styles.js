@@ -19,6 +19,20 @@ export function setToBottom(){
     }});
     return style.bottom;
 }
+export function setInputDesign(){
+    const style = StyleSheet.create({
+        design: {
+           color:Color.COLOR_PRIMARY,
+           borderBottomWidth:2,
+           borderBottomColor:Color.COLOR_PRIMARY,
+           width:toPxlWidth(70),
+           padding:5,
+           paddingLeft:10,
+           paddingRight:10
+
+    }});
+    return style.design;
+}
 export function setColor(color){
     const style = StyleSheet.create({
         color: {

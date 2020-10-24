@@ -8,9 +8,7 @@ export function Button(props) {
         return (
             <TouchableOpacity
                 style={Styles.setButtonDesign(props.width)}>
-                <ActivityIndicator
-                    color='#fff'
-                    size="medium" />
+                <ActivityIndicator color='#fff' />
             </TouchableOpacity>
         );
     } else {
