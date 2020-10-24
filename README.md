@@ -1,26 +1,17 @@
-[![csivit][csivitu-shield]][csivitu-url]
-[![Issues][issues-shield]][issues-url]
-
-<!-- PROJECT LOGO -->
-<br />
 <p align="center">
   <a href="https://github.com/github_username/repo">
-    <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
+    <img src="https://raw.githubusercontent.com/Official-Alpha-Group/app/master/assets/img/icon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">Alpha Foods</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
-    <br />
-    <a href="https://github.com/csivitu/repo"><strong>Explore the docs »</strong></a>
+    Subscription based product delivery service.
     <br />
     <br />
-    <a href="https://github.com/csivitu/repo">View Demo</a>
     ·
-    <a href="https://github.com/csivitu/repo/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/csivitu/repo/issues">Request Feature</a>
+    <a href="https://github.com/Official-Alpha-Group/app/issues/new">Report Bug</a>
+    .
   </p>
 </p>
 
