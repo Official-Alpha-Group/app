@@ -8,6 +8,9 @@
           "@res":"./components/res",
           "@utils":"./utils",
           "@fragment":"./components/fragment",
+          "@reducer":"./reducer",
+          "@store":"./store",
+          "@actions":"./actions",
           "underscore": "lodash"
         }
       }]
