@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, ActivityIndicator,TouchableOpacity } from 'react-native';
+
 import * as Styles from '@res/styles';
 import {COLOR_WHITE} from '@res/color';
 
@@ -36,3 +37,4 @@ export function CardView(props) {
         </TouchableOpacity>
     );
 }
+

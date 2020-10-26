@@ -21,12 +21,12 @@ export class ProductActivity extends Component {
                     <ProductFragment
                         id={this.props.route.params.id}
                     />
-                    
                 </View>
             </ImageBackground>
         );
     }
 }
+
 
 //<a href="https://www.vecteezy.com/free-vector/online-shopping">Online Shopping Vectors by Vecteezy</a>
 //<a href="https://www.vecteezy.com/free-vector/food-delivery">Food Delivery Vectors by Vecteezy</a>
