@@ -6,24 +6,27 @@ import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
 import { COLOR_BLACK, COLOR_PRIMARY } from '@res/color';
 import configureStore from '@store/store';
-import {loadRegisterActivity} from '@actions/actions'
+import {loadRegisterActivity,sendOtp} from '@actions/actions'
 
 
 const store = configureStore();
 export class RegisterActivity extends Component {
     constructor(props) {
         super(props);
-        this.state = {uri:""}; 
-        store.dispatch({ type: loadRegisterActivity });
-        const xyz = store.getState().promise.then((data) =>{
-            this.setState({uri:data.captchaUri});
-        });
-        super(props);
         this.state = {
+            uri:'x',
             errortext: '',
             buttontext: 'Send OTP',
             animating: false,
+            captchaText: ''
         };
+
+        store.dispatch({ type: loadRegisterActivity.type });
+        const xyz = store.getState().promise.then((data) =>{
+            this.csrfToken = data.csrfToken;
+            this.sessionId = data.sessionId;
+            this.setState({uri:data.captchaUri});
+        });
     }
     setNumber = (number) => {
         this.setState({
@@ -31,25 +34,23 @@ export class RegisterActivity extends Component {
         });
         this.number = number;
     }
+    captchaText = (text)=>{
+        this.text = text;
+    }
     sendOTP = () => {
         try {
             this.setState(
                 { animating: true });
             if (this.number != undefined) {
                 if (isNaturalNumber(parseInt(this.number)) && this.number.length == 10) {
-                    return fetch('http://192.168.29.107/xyz.php')
-                        .then((response) => response.json())
-                        .then((json) => {
-                            this.setState(
-                                {
-                                    animating: false,
-                                    buttontext: 'Verify OTP'
-                                });
-                            return json.ping;
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        });
+                    store.dispatch({    
+                     type:sendOtp.type,
+                     payload : JSON.stringify({ 
+                         number:this.number,
+                         csrfToken:this.csrfToken,
+                         sessionId: this.sessionId ,
+                         captchaText:this.state.captchaText
+                        }) });
                 } else
                     this.setState({
                         animating: false,
@@ -107,6 +108,7 @@ export class RegisterActivity extends Component {
                     <TextInput
                         style={{marginLeft:25,borderBottomColor:COLOR_PRIMARY,borderBottomWidth:2}}
                         maxLength={5}
+                        onChangeText={text => this.captchaText(text)}
                         underlineColorAndroid="transparent"
                         placeholder="Captcha"
                         autoCapitalize="none" />

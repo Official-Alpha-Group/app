@@ -7,4 +7,8 @@ export function isConnected() {
         .catch((error) => { return { type: UNKNOWN_ERROR }; })
 }
 
-export const loadRegisterActivity = () => { type:'load/register' } 
+export const loadRegisterActivity =  { type:'load/register' } 
+export const sendOtp = { 
+    type:'network/send_otp' ,
+    payload :null
+} 
