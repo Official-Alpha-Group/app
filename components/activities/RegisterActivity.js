@@ -6,12 +6,15 @@ import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
 import { COLOR_BLACK, COLOR_PRIMARY } from '@res/color';
 import configureStore from '@store/store';
+import {loadRegisterActivity} from '@actions/actions'
+
 
 const store = configureStore();
 export class RegisterActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {uri:""}; 
+        store.dispatch({ type: loadRegisterActivity });
         const xyz = store.getState().promise.then((data) =>{
             this.setState({uri:data.captchaUri});
         });

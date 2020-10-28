@@ -10,3 +10,7 @@
 * Changing architecture to Redux.
 * Varius vector assets has been added.
 * Primary Color of app has been changed.
+
+### Version 0.2.0
+* Redux is added.
+* Captcha is added.

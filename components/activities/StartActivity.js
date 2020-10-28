@@ -4,14 +4,12 @@ import * as Styles from '@res/styles';
 import * as Const from '@res/string';
 import { Button } from '@utils/CustomView';
 import {COLOR_PRIMARY} from '@res/color';
-import {loadRegisterActivity} from '@actions/actions'
 
-const store = configureStore();
+
 export class StartActivity extends Component {
 
   openRegisterNow = () => {
     this.props.navigation.navigate('RegisterActivity');
-    store.dispatch({ type: loadRegisterActivity });
   }
   render() {
     return (
