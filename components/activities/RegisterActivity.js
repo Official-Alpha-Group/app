@@ -41,27 +41,27 @@ export class RegisterActivity extends Component {
         try {
             this.setState(
                 { animating: true });
-            if (this.number != undefined) {
-                if (isNaturalNumber(parseInt(this.number)) && this.number.length == 10) {
+            //if (this.number != undefined) {
+                //if (isNaturalNumber(parseInt(this.number)) && this.number.length == 10) {
                     store.dispatch({    
                      type:sendOtp.type,
                      payload : JSON.stringify({ 
                          number:this.number,
                          csrfToken:this.csrfToken,
                          sessionId: this.sessionId ,
-                         captchaText:this.state.captchaText
+                         captchaText:this.text
                         }) });
-                } else
+                /*} else
                     this.setState({
                         animating: false,
                         errortext: 'Invalid mobile number'
                     });
-            } else
+            /*} else
                 this.setState({
                     animating: false,
                     errortext: 'Enter your mobile number to continue'
                 }
-                );
+                );*/
 
         } catch (error) {
             console.log(error);
