@@ -17,10 +17,13 @@ export function load(state = intitalState, action) {
                     captchaText:action.payload.captchaText
                 })
             })
-            .then((response) => { return (response); })
+            .then((response) => { return (response.json()); })
             .then((data) => {
-                console.log(JSON.stringify(data));
-                return data;
+                return {
+                    ...state,
+                    response:data.response,
+                    csrfToken:data.csrfToken
+                };
             })
             .catch((exception) => { console.log(exception.message);} );
             return response;
