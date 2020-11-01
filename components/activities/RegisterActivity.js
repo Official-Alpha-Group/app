@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TextInput, ImageBackground, KeyboardAvoidingView } from 'react-native';
+import { Text, View, Image, TextInput, ImageBackground, ScrollView,KeyboardAvoidingView } from 'react-native';
 import * as Styles from '@res/styles';
 import { REGISTER } from '@res/string';
 import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
 import { COLOR_BLACK, COLOR_PRIMARY } from '@res/color';
 import configureStore from '@store/store';
-import { loadRegisterActivity, sendOtp, updateStore } from '@actions/actions'
+import { loadRegisterActivity, sendOtp, updateStore } from '@actions/actions';
 
 
 const store = configureStore();
@@ -69,6 +69,8 @@ export class RegisterActivity extends Component {
                             animating: false,
                             errortext: data.error
                         });
+                    }else{
+                        this.props.navigation.navigate('VerifyActivity');
                     }
                 })
             } else
@@ -88,13 +90,15 @@ export class RegisterActivity extends Component {
     }
     render() {
         return (
+            <ScrollView>
             <ImageBackground
                 source={require('assets/img/vector.png')}
                 style={{ width: Styles.toPxlWidth(100), height: Styles.toPxlHeight(100) }}>
                 <KeyboardAvoidingView behavior="padding" style={Styles.center(1)}>
                     <Text style={[
                         Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),
-                        Styles.setMargin(0, 0, 0, 30)]}>
+                        Styles.setMargin(0, 0, 0, 30),
+                        {fontSize:28}]}>
                         {REGISTER}
                     </Text>
                     <Text style={[
@@ -111,28 +115,30 @@ export class RegisterActivity extends Component {
                         underlineColorAndroid="transparent"
                         placeholder="Mobile Number"
                         autoCapitalize="none" />
-                    <View style={{ flexDirection: 'row', margin: 20 }}>
-                        <Image
-                            style={{
-                                width: Styles.toPxlWidth(35),
-                                height: Styles.toPxlHeight(5),
-                                resizeMode: 'contain'
-                            }}
+                    <View  style={Styles.setMarginAll(10)}>
+                        <Text style={
+                            [Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),Styles.setMargin(0,10,0,20)]}>
+                                Security Check:</Text>
+                        <Image style={{
+                             width: Styles.toPxlWidth(70),
+                             height: Styles.toPxlHeight(7),
+                             resizeMode: 'contain'
+                        }}
                             source={{
                                 uri:
                                     this.state.uri
                             }}
                         />
                         <TextInput
-                            style={{ marginLeft: 25, borderBottomColor: COLOR_PRIMARY, borderBottomWidth: 2 }}
+                            style={[Styles.setInputDesign(),Styles.setMargin(0,20,0,0)]}
                             maxLength={5}
                             onChangeText={text => this.captchaText(text)}
                             underlineColorAndroid="transparent"
-                            placeholder="Captcha"
+                            placeholder="Captcha Text"
                             autoCapitalize="none" />
                     </View>
                     <Button
-                        margin={30}
+                        margin={40}
                         width={80}
                         header={this.state.buttontext}
                         onClick={this.sendOTP}
@@ -147,7 +153,7 @@ export class RegisterActivity extends Component {
                 </KeyboardAvoidingView>
 
             </ImageBackground>
-
+            </ScrollView>
         );
     }
 }

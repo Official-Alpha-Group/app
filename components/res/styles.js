@@ -64,7 +64,7 @@ export function setAppnameDesign() {
     const style = StyleSheet.create({
     appName: {
         textAlign: 'center',
-        fontSize: 23,
+        fontSize: 30,
         color:Color.COLOR_SECONDARY,
         marginBottom: 80,
         fontFamily: 'Appfont'
@@ -119,6 +119,15 @@ export function setButtonDesign(widthPercent) {
             width: toPxlWidth(widthPercent)
     }});
     return style.button;
+}
+export function setCaptcha(){
+    const style = StyleSheet.create({
+        captcha:{
+            width: toPxlWidth(70),
+            height: toPxlHeight(7),
+            resizeMode: 'contain'
+    }});
+    return style.capthca;
 }
 export function toPxlWidth(percent) {
     return ((Dimensions.get('window').width) * percent) / 100;

@@ -1,4 +1,4 @@
-/*import { Text, View, Image, TextInput, ImageBackground, KeyboardAvoidingView } from 'react-native';
+import { Text, View, Image, TextInput, ImageBackground, KeyboardAvoidingView } from 'react-native';
 import React, { Component } from 'react';
 import * as Styles from '@res/styles';
 import { REGISTER } from '@res/string';
@@ -96,4 +96,4 @@ export class VerifyActivity extends Component {
 
         );
     }
-}*/
+}
