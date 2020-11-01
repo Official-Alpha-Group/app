@@ -23,7 +23,7 @@ export function setInputDesign(){
     const style = StyleSheet.create({
         design: {
            color:Color.COLOR_BLACK,
-           borderBottomWidth:2,
+           borderBottomWidth:1,
            borderBottomColor:Color.COLOR_SECONDARY,
            width:toPxlWidth(70),
            padding:5,

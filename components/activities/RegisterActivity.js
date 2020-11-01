@@ -61,7 +61,6 @@ export class RegisterActivity extends Component {
                         captchaText: this.text
                     })
                 });
-
                 store.getState().promise.then((data) => {
                     if (!data.otpSent) {
                         this.loadActivity();
@@ -70,6 +69,7 @@ export class RegisterActivity extends Component {
                             errortext: data.error
                         });
                     }else{
+                        store.dispatch({type:'null'});
                         this.props.navigation.navigate('VerifyActivity');
                     }
                 })
@@ -104,7 +104,10 @@ export class RegisterActivity extends Component {
                         Styles.setTextDesign()]}>
                         To Login/Create enter your {'\n'} 10 digit mobile number.
                     </Text>
-
+                    <View>
+                    <Text style={
+                            [Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),Styles.setMargin(0,10,0,20)]}>
+                                Mobile Number:</Text>
                     <TextInput
                         style={[Styles.setInputDesign()]}
                         keyboardType='numeric'
@@ -113,6 +116,7 @@ export class RegisterActivity extends Component {
                         underlineColorAndroid="transparent"
                         placeholder="Mobile Number"
                         autoCapitalize="none" />
+                    </View>
                     <View  style={Styles.setMarginAll(10)}>
                         <Text style={
                             [Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),Styles.setMargin(0,10,0,20)]}>

@@ -25,8 +25,8 @@ export default Init = () => {
               //headerLeft: ()=> <Icon name="md-home" size={25}/> ,
             title:'Home' }} />
           <Stack.Screen name="ProductActivity" component={ProductActivity} options={{ title:''}} />
-          <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{     headerTransparent: true,title:''}} />
-          <Stack.Screen name="VerifyActivity" component={VerifyActivity} options={{ title:''}} />
+          <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ headerTransparent: true,title:''}} />
+          <Stack.Screen name="VerifyActivity" component={VerifyActivity} options={{ headerTransparent: true,title:''}} />
         </Stack.Navigator>
       </NavigationContainer> 
     )

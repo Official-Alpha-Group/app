@@ -4,14 +4,24 @@ const intitalState = { captchaUri: null, csrf: null, sessionId: null, error: nul
 export  function load(state = intitalState, action) {
     switch (action.type) {
         case actions.verifyOtp.type:
-            let response = fetch('http://192.168.29.238/home/send_otp',{
-                method : 'POST',
+            action.payload = JSON.parse(action.payload);
+            let response = fetch('http://192.168.29.238/home/verify_otp',{
+                method : 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                   },
                   body:JSON.stringify({
-                      
+                      otp:action.otp,
+                      csrfToken: action.payload.csrfToken,
+                      sessionId: action.payload.sessionId,
                   })
+            })
+            .then((response) => { return (response.json()); })
+            .then((data) => {
+                return {
+                    ...state,
+                    error:data.error,
+                    token:data.token}
             });
             return response;
         case actions.sendOtp.type:
@@ -30,7 +40,6 @@ export  function load(state = intitalState, action) {
             })
             .then((response) => { return (response.json()); })
             .then((data) => {
-                console.log(data);
                 return {
                     ...state,
                     error:data.error,

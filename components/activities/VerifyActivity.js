@@ -17,11 +17,11 @@ export class VerifyActivity extends Component {
             buttontext: 'Verify OTP',
             animating: false}
     }
-    setNumber = (otp) => {
+    setOTP = (otp) => {
         this.setState({ errortext: '' });
         this.otp = otp;
     }
-    sendOTP = () => {
+    verifyOTP = () => {
         try {
             this.setState(
                 { animating: true });
@@ -54,10 +54,8 @@ export class VerifyActivity extends Component {
     }
     render() {
         return (
-            <ImageBackground
-                source={require('assets/img/vector.png')}
-                style={{ width: Styles.toPxlWidth(100), height: Styles.toPxlHeight(100) }}>
-                <KeyboardAvoidingView behavior="padding" style={Styles.center(1)}>
+            <View style={Styles.center(1)}>
+                <KeyboardAvoidingView behavior="padding" style={Styles.center()}>
                     <Text style={[
                         Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),
                         {fontSize:28},
@@ -67,14 +65,14 @@ export class VerifyActivity extends Component {
                     <Text style={[
                         Styles.setMargin(0, 0, 0, 30),
                         Styles.setTextDesign()]}>
-                        Enter your 8 digit {'\n'} OTP sent to you.
+                        Enter your 8 digit OTP sent to you.
                     </Text>
 
                     <TextInput
                         style={[Styles.setInputDesign()]}
                         keyboardType='numeric'
                         maxLength={8}
-                        onChangeText={number => this.setNumber(number)}
+                        onChangeText={otp => this.setOTP(otp)}
                         underlineColorAndroid="transparent"
                         placeholder="OTP"
                         autoCapitalize="none" />
@@ -82,7 +80,7 @@ export class VerifyActivity extends Component {
                         margin={30}
                         width={80}
                         header={this.state.buttontext}
-                        onClick={this.sendOTP}
+                        onClick={this.verifyOTP}
                         animating={this.state.animating}
                     />
                     <Text style={[
@@ -91,8 +89,7 @@ export class VerifyActivity extends Component {
                         {this.state.errortext}
                     </Text>
                 </KeyboardAvoidingView>
-
-            </ImageBackground>
+                </View>
 
         );
     }
