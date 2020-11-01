@@ -14,3 +14,7 @@
 ### Version 0.2.0
 * Redux is added.
 * Captcha is added.
+
+### Version 0.2.1
+* Verify OTP is added
+* Mobile Verification is functional 
