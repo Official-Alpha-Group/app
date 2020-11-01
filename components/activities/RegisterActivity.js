@@ -6,7 +6,7 @@ import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
 import { COLOR_BLACK, COLOR_PRIMARY } from '@res/color';
 import configureStore from '@store/store';
-import {loadRegisterActivity,sendOtp} from '@actions/actions'
+import { loadRegisterActivity, sendOtp, updateStore } from '@actions/actions'
 
 
 const store = configureStore();
@@ -14,18 +14,28 @@ export class RegisterActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            uri:'x',
+            uri: 'x',
             errortext: '',
             buttontext: 'Send OTP',
             animating: false,
             captchaText: ''
         };
+        this.loadActivity();
+    }
 
+    loadActivity() {
         store.dispatch({ type: loadRegisterActivity.type });
-        const xyz = store.getState().promise.then((data) =>{
+        store.getState().promise.then((data) => {
+            store.dispatch({
+                type: updateStore.type,
+                payload: JSON.stringify({ sessionId: data.sessionId })
+            });
             this.csrfToken = data.csrfToken;
             this.sessionId = data.sessionId;
-            this.setState({uri:data.captchaUri});
+            this.setState({
+                uri: data.captchaUri,
+                errortext: data.error
+            });
         });
     }
     setNumber = (number) => {
@@ -34,38 +44,46 @@ export class RegisterActivity extends Component {
         });
         this.number = number;
     }
-    captchaText = (text)=>{
+    captchaText = (text) => {
         this.text = text;
     }
     sendOTP = () => {
-        try {
-            this.setState(
-                { animating: true });
-            //if (this.number != undefined) {
-                //if (isNaturalNumber(parseInt(this.number)) && this.number.length == 10) {
-                    store.dispatch({    
-                     type:sendOtp.type,
-                     payload : JSON.stringify({ 
-                         number:this.number,
-                         csrfToken:this.csrfToken,
-                         sessionId: this.sessionId ,
-                         captchaText:this.text
-                        }) });
-                /*} else
-                    this.setState({
-                        animating: false,
-                        errortext: 'Invalid mobile number'
-                    });
-            /*} else
+        this.setState(
+            { animating: true });
+        if (this.number != undefined) {
+            if (isNaturalNumber(parseInt(this.number)) && this.number.length == 10) {
+                store.dispatch({
+                    type: sendOtp.type,
+                    payload: JSON.stringify({
+                        number: this.number,
+                        csrfToken: this.csrfToken,
+                        sessionId: this.sessionId,
+                        captchaText: this.text
+                    })
+                });
+
+                store.getState().promise.then((data) => {
+                    if (!data.otpSent) {
+                        this.loadActivity();
+                        this.setState({
+                            animating: false,
+                            errortext: data.error
+                        });
+                    }
+                })
+            } else
                 this.setState({
                     animating: false,
-                    errortext: 'Enter your mobile number to continue'
-                }
-                );*/
+                    errortext: 'Invalid mobile number'
+                });
+        } else
+            this.setState({
+                animating: false,
+                errortext: 'Enter your mobile number to continue'
+            }
+            );
 
-        } catch (error) {
-            console.log(error);
-        }
+
 
     }
     render() {
@@ -93,25 +111,25 @@ export class RegisterActivity extends Component {
                         underlineColorAndroid="transparent"
                         placeholder="Mobile Number"
                         autoCapitalize="none" />
-                    <View style={{ flexDirection: 'row',margin:20}}>
-                    <Image
-                        style={{
-                            width: Styles.toPxlWidth(35),
-                            height: Styles.toPxlHeight(5),
-                            resizeMode: 'contain'
-                        }}
-                        source={{
-                            uri:
-                                this.state.uri
-                        }}
-                    />
-                    <TextInput
-                        style={{marginLeft:25,borderBottomColor:COLOR_PRIMARY,borderBottomWidth:2}}
-                        maxLength={5}
-                        onChangeText={text => this.captchaText(text)}
-                        underlineColorAndroid="transparent"
-                        placeholder="Captcha"
-                        autoCapitalize="none" />
+                    <View style={{ flexDirection: 'row', margin: 20 }}>
+                        <Image
+                            style={{
+                                width: Styles.toPxlWidth(35),
+                                height: Styles.toPxlHeight(5),
+                                resizeMode: 'contain'
+                            }}
+                            source={{
+                                uri:
+                                    this.state.uri
+                            }}
+                        />
+                        <TextInput
+                            style={{ marginLeft: 25, borderBottomColor: COLOR_PRIMARY, borderBottomWidth: 2 }}
+                            maxLength={5}
+                            onChangeText={text => this.captchaText(text)}
+                            underlineColorAndroid="transparent"
+                            placeholder="Captcha"
+                            autoCapitalize="none" />
                     </View>
                     <Button
                         margin={30}
@@ -126,7 +144,7 @@ export class RegisterActivity extends Component {
                         {this.state.errortext}
                     </Text>
 
-                    </KeyboardAvoidingView>
+                </KeyboardAvoidingView>
 
             </ImageBackground>
 

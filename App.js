@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StartActivity } from './components/activities/StartActivity';
 import { ProductActivity } from './components/activities/ProductActivity';
 import { RegisterActivity} from './components/activities/RegisterActivity';
+import { VerifyActivity} from './components/activities/VerifyActivity';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { AppLoading } from 'expo';
@@ -22,6 +23,7 @@ export default Init = () => {
           <Stack.Screen name="StartActivity" component={StartActivity} options={{ title:'Home' }} />
           <Stack.Screen name="ProductActivity" component={ProductActivity} options={{ title:''}} />
           <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ title:''}} />
+          
         </Stack.Navigator>
       </NavigationContainer> 
     )

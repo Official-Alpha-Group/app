@@ -1,9 +1,13 @@
 import { createStore, combineReducers } from 'redux';
-import {load} from '@reducer/reducer';
+import {load} from '@reducer/load';
+import {updateStore} from '@reducer/updateStore';
 
 
 const store = combineReducers(
-    { promise : load }
+    { 
+        promise : load,
+        state : updateStore
+    }
 );
 
 const configureStore = () => {
