@@ -18,3 +18,4 @@
 ### Version 0.2.1
 * Verify OTP is added
 * Mobile Verification is functional 
+* Better Design
