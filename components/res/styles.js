@@ -22,9 +22,9 @@ export function setToBottom(){
 export function setInputDesign(){
     const style = StyleSheet.create({
         design: {
-           color:Color.COLOR_PRIMARY,
+           color:Color.COLOR_BLACK,
            borderBottomWidth:2,
-           borderBottomColor:Color.COLOR_PRIMARY,
+           borderBottomColor:Color.COLOR_SECONDARY,
            width:toPxlWidth(70),
            padding:5,
            paddingLeft:10,
@@ -119,15 +119,6 @@ export function setButtonDesign(widthPercent) {
             width: toPxlWidth(widthPercent)
     }});
     return style.button;
-}
-export function setCaptcha(){
-    const style = StyleSheet.create({
-        captcha:{
-            width: toPxlWidth(70),
-            height: toPxlHeight(7),
-            resizeMode: 'contain'
-    }});
-    return style.capthca;
 }
 export function toPxlWidth(percent) {
     return ((Dimensions.get('window').width) * percent) / 100;

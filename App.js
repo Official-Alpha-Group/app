@@ -20,12 +20,12 @@ export default Init = () => {
   if (_FontsLoaded) {
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator mode='card'>
           <Stack.Screen name="StartActivity" component={StartActivity} options={{ 
               //headerLeft: ()=> <Icon name="md-home" size={25}/> ,
             title:'Home' }} />
           <Stack.Screen name="ProductActivity" component={ProductActivity} options={{ title:''}} />
-          <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ title:''}} />
+          <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{     headerTransparent: true,title:''}} />
           <Stack.Screen name="VerifyActivity" component={VerifyActivity} options={{ title:''}} />
         </Stack.Navigator>
       </NavigationContainer> 

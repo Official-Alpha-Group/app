@@ -1,10 +1,9 @@
 import { Text, View, Image, TextInput, ImageBackground, KeyboardAvoidingView } from 'react-native';
 import React, { Component } from 'react';
 import * as Styles from '@res/styles';
-import { REGISTER } from '@res/string';
 import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
-import { COLOR_BLACK, COLOR_PRIMARY } from '@res/color';
+import { COLOR_BLACK} from '@res/color';
 import configureStore from '@store/store';
 import { verifyOtp } from '@actions/actions';
 
@@ -39,12 +38,12 @@ export class VerifyActivity extends Component {
                 } else
                     this.setState({
                         animating: false,
-                        errortext: 'Invalid mobile number'
+                        errortext: 'Invalid OTP'
                     });
             } else
                 this.setState({
                     animating: false,
-                    errortext: 'Enter your mobile number to continue'
+                    errortext: 'Enter your OTP to continue'
                 }
                 );
 
@@ -61,22 +60,23 @@ export class VerifyActivity extends Component {
                 <KeyboardAvoidingView behavior="padding" style={Styles.center(1)}>
                     <Text style={[
                         Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),
+                        {fontSize:28},
                         Styles.setMargin(0, 0, 0, 30)]}>
-                        {REGISTER}
+                        {'Enter OTP'}
                     </Text>
                     <Text style={[
                         Styles.setMargin(0, 0, 0, 30),
                         Styles.setTextDesign()]}>
-                        To Login/Create enter your {'\n'} 10 digit mobile number.
+                        Enter your 8 digit {'\n'} OTP sent to you.
                     </Text>
 
                     <TextInput
                         style={[Styles.setInputDesign()]}
                         keyboardType='numeric'
-                        maxLength={10}
+                        maxLength={8}
                         onChangeText={number => this.setNumber(number)}
                         underlineColorAndroid="transparent"
-                        placeholder="Mobile Number"
+                        placeholder="OTP"
                         autoCapitalize="none" />
                     <Button
                         margin={30}

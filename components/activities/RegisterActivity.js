@@ -4,7 +4,7 @@ import * as Styles from '@res/styles';
 import { REGISTER } from '@res/string';
 import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
-import { COLOR_BLACK, COLOR_PRIMARY } from '@res/color';
+import { COLOR_BLACK, COLOR_PRIMARY,COLOR_SECONDARY } from '@res/color';
 import configureStore from '@store/store';
 import { loadRegisterActivity, sendOtp, updateStore } from '@actions/actions';
 
@@ -90,11 +90,9 @@ export class RegisterActivity extends Component {
     }
     render() {
         return (
-            <ScrollView>
-            <ImageBackground
-                source={require('assets/img/vector.png')}
-                style={{ width: Styles.toPxlWidth(100), height: Styles.toPxlHeight(100) }}>
-                <KeyboardAvoidingView behavior="padding" style={Styles.center(1)}>
+            <View style={Styles.center(1)}>
+                
+                <KeyboardAvoidingView behavior="padding" style={Styles.center()}>
                     <Text style={[
                         Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),
                         Styles.setMargin(0, 0, 0, 30),
@@ -152,8 +150,8 @@ export class RegisterActivity extends Component {
 
                 </KeyboardAvoidingView>
 
-            </ImageBackground>
-            </ScrollView>
+
+            </View>
         );
     }
 }
