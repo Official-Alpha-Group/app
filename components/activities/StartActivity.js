@@ -13,14 +13,12 @@ export class StartActivity extends Component {
   }
   render() {
     return (
-      <ScrollView>
-      <ImageBackground
-        source={require('assets/img/vector.png')}
-        style={{ width: Styles.toPxlWidth(100), height: Styles.toPxlHeight(100) }}>
+
+
         <View style={Styles.center(1)}>
           <Image
             source={require('assets/img/logo.png')}
-            style={[Styles.setLogo(), Styles.setMargin(0,0,0,30)]} />
+            style={[Styles.setLogo(), Styles.setMargin(0,30,0,30)]} />
           <Text style={Styles.setAppnameDesign()}>
             {Const.APP_NAME_LOWER}
           </Text>
@@ -31,14 +29,14 @@ export class StartActivity extends Component {
             width={80}
           />
           <Button
-            margin={20}
+            margin={30}
             header='One Time Purchase'
             onClick={() => {this.props.navigation.navigate('ProductActivity',{id:1})}}
             animating={false}
             width={80} />
           <Text style={
             [Styles.setTextDesign(),
-            Styles.setMargin(0,10,0,0),
+            Styles.setMargin(0,10,0,10),
             Styles.setOpacity(0.5)]}>
             OR
           </Text>
@@ -49,9 +47,14 @@ export class StartActivity extends Component {
             onPress={this.openRegisterNow}>
                 {Const.REGISTER}
           </Text>
+          <Text style={
+            [Styles.setTextDesign(),
+            Styles.setMargin(0,20,0,20),
+            Styles.setOpacity(0.5)]}>
+            Version 1.0.0
+          </Text>
         </View>
-      </ImageBackground>
-      </ScrollView>
+
     );
   }
 }

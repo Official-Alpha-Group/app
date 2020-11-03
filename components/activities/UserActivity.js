@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import configureStore from '@store/store';
 import * as Styles from '@res/styles';
-import {blocks} from '@res/listStyles';
+import {blocks,bottomBorder} from '@res/listStyles';
 import {COLOR_BLACK} from '@res/color';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { Text,  View,  TouchableHighlight,SectionList} from "react-native";
 const store = configureStore();
-import {
-    StyleSheet,
-    Text,
-    View,
-    SafeAreaView,
-    SectionList
-} from "react-native";
+
 export class UserActivity extends Component {
     constructor(props) {
         super(props);
        
+    }
+    onClick= (key) =>{
+      switch(key){
+        case 'Contact Number':
+          console.log(key);
+        default:
+          console.log("Error");
+
+
+      }
     }
 
     render() {
@@ -52,9 +56,12 @@ export class UserActivity extends Component {
             },
           ]}
           renderItem={({item}) => 
-            <Text style={[blocks(),Styles.setTextDesign(COLOR_BLACK)]}>
+          <TouchableHighlight
+          onPress={() => this.onClick(item)}>
+            <Text style={[blocks(),bottomBorder(),Styles.setTextDesign(COLOR_BLACK)]}>
               {item}
             </Text>
+          </TouchableHighlight>
           }
           renderSectionHeader={({section}) => (
             <Text style={[blocks(),Styles.setTextDesign(COLOR_BLACK,'PrimaryBold')]}><Icon name={section.icon} size={14}/>  {section.title}</Text>

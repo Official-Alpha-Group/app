@@ -5,7 +5,14 @@ export function blocks(){
         margin: {
              padding:8,
              margin:5,
-
     }});
+    return style.margin;
+}
+export function bottomBorder(){
+    const style = StyleSheet.create({
+        margin: {
+            borderBottomWidth:1,
+            borderBottomColor:Color.COLOR_BLACK,
+            borderBottomColor:'white'    }});
     return style.margin;
 }

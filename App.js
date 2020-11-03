@@ -23,10 +23,10 @@ export default Init = () => {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-        <Stack.Screen name="UserActivity" component={UserActivity} options={{ headerTransparent: false,title:'Settings'}} />
           <Stack.Screen name="StartActivity" component={StartActivity} options={{ 
+            headerTransparent: true,
               //headerLeft: ()=> <Icon name="md-home" size={25}/> ,
-            title:'Home' }} />
+            title:'' }} />
           <Stack.Screen name="ProductActivity" component={ProductActivity} options={({ navigation, route })=> ({ 
                 title:'', headerRight: ()=> 
                 <TouchableOpacity onPress={()=>{navigation.navigate('UserActivity')}}> 
@@ -35,7 +35,7 @@ export default Init = () => {
                 headerRightContainerStyle:{marginRight:15}})} />
           <Stack.Screen name="RegisterActivity" component={RegisterActivity} options={{ headerTransparent: true,title:''}} />
           <Stack.Screen name="VerifyActivity" component={VerifyActivity} options={{ headerTransparent: true,title:''}} />
-          
+          <Stack.Screen name="UserActivity" component={UserActivity} options={{ headerTransparent: false,title:'Settings'}} />
         </Stack.Navigator>
       </NavigationContainer> 
     )
