@@ -4,7 +4,7 @@ import * as Styles from '@res/styles';
 import { REGISTER } from '@res/string';
 import { Button } from '@utils/CustomView';
 import { isNaturalNumber } from '@utils/isNatural'
-import { COLOR_BLACK, COLOR_PRIMARY,COLOR_SECONDARY } from '@res/color';
+import { COLOR_BLACK} from '@res/color';
 import configureStore from '@store/store';
 import { loadRegisterActivity, sendOtp, updateStore } from '@actions/actions';
 
