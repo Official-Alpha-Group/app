@@ -12,12 +12,13 @@ export class UserActivity extends Component {
         super(props);
        
     }
-    onClick= (key) =>{
-      switch(key){
-        case 'Contact Number':
-          console.log(key);
+    onClick= (value,index) =>{
+      switch(index){
+        case 0:
+          this.props.navigation.navigate('RegisterActivity');
+          break;
         default:
-          console.log("Error");
+          alert('Unkown Error Occured');
 
 
       }
@@ -29,42 +30,45 @@ export class UserActivity extends Component {
         <SectionList 
           sections={[
             {
+              mobileNumber:'9981710273',
             title: 'User',
             icon:'user',
               data: [
-                'Contact Number',
-                'Update Address',
+                {index:0,value:'Update Contact Number',},
+                {index:1,value: 'Update Address'},
               ],
             },
             {
               title: 'Orders',
               icon:'shopping-cart',
               data: [
-                'Your Subscriptions',
-                'Your One Time Purchage'
+                {index:2,value: 'Your One Time Purchage'},
+                {index:3,value: 'Your Subscriptions'}
               ],
             },
             {
               title: 'Options',
               icon:'list',
               data: [
-                'Logout',
-                'Credit',
-                'Help',
-                'About'
+                {index:4,value:'Logout'},
+                {index:5,value:'Credit'},
+                {index:6,value: 'Help'},
+                {index:7,value: 'About'},               
+                
               ],
             },
           ]}
-          renderItem={({item}) => 
+          renderItem={({item,section}) => 
           <TouchableHighlight
-          onPress={() => this.onClick(item)}>
+          onPress={() => this.onClick(item.value,item.index)}>
             <Text style={[blocks(),bottomBorder(),Styles.setTextDesign(COLOR_BLACK)]}>
-              {item}
+              {item.value}
+              
             </Text>
           </TouchableHighlight>
           }
-          renderSectionHeader={({section}) => (
-            <Text style={[blocks(),Styles.setTextDesign(COLOR_BLACK,'PrimaryBold')]}><Icon name={section.icon} size={14}/>  {section.title}</Text>
+          renderSectionHeader={({section}) => (<>
+            <Text style={[blocks(),Styles.setTextDesign(COLOR_BLACK,'PrimaryBold')]}><Icon name={section.icon} size={14}/>  {section.title} <Text style={{textAlign: 'right'}}>{section.mobileNumber}</Text></Text></>
           )}
           keyExtractor={(item, index) => index}
         />

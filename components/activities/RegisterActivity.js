@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TextInput, ImageBackground, ScrollView,KeyboardAvoidingView } from 'react-native';
+import { Text, View, Image, TextInput,KeyboardAvoidingView } from 'react-native';
 import * as Styles from '@res/styles';
 import { REGISTER } from '@res/string';
 import { Button } from '@utils/CustomView';
@@ -99,11 +99,7 @@ export class RegisterActivity extends Component {
                         {fontSize:28}]}>
                         {REGISTER}
                     </Text>
-                    <Text style={[
-                        Styles.setMargin(0, 0, 0, 30),
-                        Styles.setTextDesign()]}>
-                        To Login/Create enter your {'\n'} 10 digit mobile number.
-                    </Text>
+
                     <View>
                     <Text style={
                             [Styles.setTextDesign(COLOR_BLACK, 'PrimaryBold'),Styles.setMargin(0,10,0,20)]}>
