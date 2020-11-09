@@ -5,7 +5,7 @@ export  function load(state = intitalState, action) {
     switch (action.type) {
         case actions.verifyOtp.type:
             action.payload = JSON.parse(action.payload);
-            let response = fetch('http://192.168.29.238/home/verify_otp',{
+            let response = fetch('http://192.168.43.107/home/verify_otp',{
                 method : 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export  function load(state = intitalState, action) {
             return response;
         case actions.sendOtp.type:
             action.payload = JSON.parse(action.payload);
-            response = fetch('http://192.168.29.238/home/send_otp',{
+            response = fetch('http://192.168.43.107/home/send_otp',{
                 method : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export  function load(state = intitalState, action) {
             .catch((exception) => { console.log(exception.message);} );
             return response;
         case actions.loadRegisterActivity.type:
-             response = fetch('http://192.168.29.238/home/load_register_activity',{
+             response = fetch('http://192.168.43.107/home/load_register_activity',{
                     method : 'GET'
              })
                 .then((response) => { return response.json(); })
@@ -64,6 +64,7 @@ export  function load(state = intitalState, action) {
                     };
                 })
                 .catch((exception) => { 
+                    console.log(exception.message);
                     return{
                         ...state,
                         error : 'Cannot Connect to Server.'
