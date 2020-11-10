@@ -25,7 +25,7 @@ export class RegisterActivity extends Component {
 
     loadActivity() {
         store.dispatch({ type: loadRegisterActivity.type });
-        store.getState().promise.then((data) => {
+        store.getState().register.then((data) => {
             store.dispatch({
                 type: updateStore.type,
                 payload: JSON.stringify({ sessionId: data.sessionId })
@@ -61,7 +61,7 @@ export class RegisterActivity extends Component {
                         captchaText: this.text
                     })
                 });
-                store.getState().promise.then((data) => {
+                store.getState().register.then((data) => {
                     if (!data.otpSent) {
                         this.loadActivity();
                         this.setState({

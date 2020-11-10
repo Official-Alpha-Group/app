@@ -1,8 +1,10 @@
 import * as actions from '@actions/actions';
+import configureStore from '@store/store';
+const store = configureStore();
 
 const intitalState = { captchaUri: null, csrf: null, sessionId: null, error: null };
-export  function load(state = intitalState, action) {
-    switch (action.type) {
+export  function register(state = intitalState, action) {
+    switch (action.type) {           
         case actions.verifyOtp.type:
             action.payload = JSON.parse(action.payload);
             let response = fetch('http://192.168.43.107/home/verify_otp',{
@@ -50,13 +52,14 @@ export  function load(state = intitalState, action) {
             .catch((exception) => { console.log(exception.message);} );
             return response;
         case actions.loadRegisterActivity.type:
-             response = fetch('http://192.168.43.107/home/load_register_activity',{
+             response = fetch('http://192.168.43.107/home/load_register_activity/'+store.getState().token,{
                     method : 'GET'
              })
                 .then((response) => { return response.json(); })
                 .then((data) => {
                     return {
                         ...state,
+                        isLogin:data.token,
                         captchaUri: data.captchaImage,
                         csrfToken : data.csrfToken,
                         sessionId : data.sessionId,
