@@ -33,3 +33,4 @@ export class ProductActivity extends Component {
 // Lia Aramburu 
 //Amonrat <a href="https://www.vecteezy.com/free-vector/icons">Icons Vectors by Vecteezy</a>
 // happymeluv <a href="https://www.vecteezy.com/free-vector/chocolate">Chocolate Vectors by Vecteezy</a>
+//<a href="https://www.vecteezy.com/free-vector/coming-soon">Coming Soon Vectors by Vecteezy</a>

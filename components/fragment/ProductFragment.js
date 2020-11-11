@@ -24,7 +24,7 @@ export class ProductFragment extends Component {
                 Subscribe Fragment
                 =============================
 */  
-        if (this.state.id === 0)
+        if (this.state.id === 0 || this.state.id === 1) 
             return (
                 <>
                     <View style={{ flexDirection: 'row' }}>
@@ -34,9 +34,6 @@ export class ProductFragment extends Component {
                         <CardView
                             text='Milk'
                             source={require('assets/img/milk.png')} />
-                        <CardView
-                            text={`Fruit\nJuice`}
-                            source={require('assets/img/coconut.png')} />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <CardView
@@ -44,42 +41,17 @@ export class ProductFragment extends Component {
                             source={require('assets/img/dry_fruits.png')}
                             onClick={() => { this.onPress(2,0) }} />
                         <CardView
-                            text={`abc item`}
+                            text={`Juice`}
                             source={require('assets/img/coconut.png')} />
                     </View>
-                    <View style={[Styles.setToBottom(), { flexDirection: 'row' }]}>
+                    <View style={[Styles.setToBottom(),Styles.setMargin(30,25,30,25), { flexDirection: 'row' }]}>
                         <Button
-                            margin={30}
+
                             header='Add to Cart'
                             onClick={null}
                             animating={false}
                             width={80} />
                     </View>
-                </>);
-/*
-                One Time Purchage Fragment
-                =============================
-*/   
-        else if (this.state.id === 1)
-            return (
-                <>
-                    <View style={{ flexDirection: 'row' }}>
-                        <CardView
-                            text={`Homemade \nChocolate`}
-                            source={require('assets/img/choco.png')} />
-                        <CardView
-                            text={`Dry Fruits`}
-                            source={require('assets/img/dry_fruits.png')}
-                            onClick={() => { this.onPress(2,1) }} />
-                    </View>
-                    <View style={[Styles.setToBottom(), { flexDirection: 'row' }]}>
-                            <Button
-                                margin={30}
-                                header='Add to Cart'
-                                onClick={null}
-                                animating={false}
-                                width={80} />
-                        </View>
                 </>);
 /*
                 Dry Fruits Fragment
@@ -91,12 +63,14 @@ export class ProductFragment extends Component {
                 <TouchableOpacity 
                 onPress={() => { this.onPress(this.state.returnBack,this.state.returnBack) }}
                 style={{ flexDirection: 'row' }}> 
-                    <Text style={[Styles.setTextDesign(COLOR_PRIMARY), Styles.setMargin(0, 10)]}>
+                    <Text style={[Styles.setTextDesign(COLOR_PRIMARY), Styles.setMargin(0, 10,0,10)]}>
                         <Icon name="md-arrow-back" size={17} color={COLOR_PRIMARY} />  View all products
                     </Text>
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row' }}>
-                        
+                    <Text style={Styles.setTextDesign()}>
+                        Products:
+                    </Text>
                 </View>
                 <View style={[Styles.setToBottom(), { flexDirection: 'row' }]}>
                     <Button
@@ -113,6 +87,8 @@ export class ProductFragment extends Component {
                         width={40} />
                 </View>
             </>);
+        }else if (this.state.id === 3) {
+            
         }
     }
 }

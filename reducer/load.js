@@ -1,6 +1,5 @@
 import * as actions from '@actions/actions';
-import configureStore from '@store/store';
-const store = configureStore();
+
 
 const intitalState = { captchaUri: null, csrf: null, sessionId: null, error: null };
 export  function register(state = intitalState, action) {
